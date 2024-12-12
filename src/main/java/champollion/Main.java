@@ -4,7 +4,7 @@ package champollion;
  * Un exemple d'utilisation des classes
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Enseignant bastide = new Enseignant("Rémi Bastide", "Remi.Bastide@irit.fr");
         Enseignant lamine = new Enseignant("Elyes Lamine", "Elyes.Lamine@univ-jfc.fr");
 
@@ -17,12 +17,15 @@ public class Main {
         lamine.ajouteEnseignement(bd, 10, 20, 15);
         lamine.ajouteEnseignement(web, 15, 15, 25);
 
+        Intervention diagrammes = new Intervention("07-09-2024", 60, false, 14, uml, TypeIntervention.TD);
+
         System.out.printf("Mr. %s a un total de %d heures prévues%n", bastide.getNom(), bastide.heuresPrevues());
         System.out.printf("Mr. %s a un total de %d heures prévues%n", lamine.getNom(), lamine.heuresPrevues());
         System.out.printf("Mr. %s a un total de %d heures prévues dans l'UE %s%n",
                 bastide.getNom(),
                 bastide.heuresPrevuesPourUE(uml),
                 uml.getIntitule());
-    }
 
+        bastide.addIntervention(diagrammes);
+    }
 }
